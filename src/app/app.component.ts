@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ExampleService } from './app.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Disciplina } from '../dados/disciplina';
 
@@ -12,13 +12,17 @@ import { Disciplina } from '../dados/disciplina';
 export class AppComponent {
   title = 'app';
 
-  loginForm: FormGroup;
+  exampleForm: FormGroup;
   fb: FormBuilder;
   Disciplina: Disciplina;
+  disciplinas: Disciplina[]
+  identificador: String
+  
 
   constructor(private ExampleService: ExampleService) {
-
-    }
+    this.fb = new FormBuilder();
+   
+  }
 
   ngOnInit() {
     this.ExampleService.getDisciplinas();
@@ -43,15 +47,29 @@ export class AppComponent {
       });
 
     console.log("test");  
+    this.getDisciplinas();
+  }
+
+  deletarDisciplina(id){
+    alert("Id : " + id.number);
+    this.ExampleService.excluirDisciplina(id).subscribe(
+      response => {
+        console.log(response);
+       
+      });
+    this.getDisciplinas();
+    console.log(this.disciplinas);  
+  }
+
+  getDisciplinas(){
     this.ExampleService.getDisciplinas().subscribe(
       response => {
         console.log(response);
+        this.disciplinas = response;
+        console.log("Disciplinas: ");
+        console.log(this.disciplinas);
+
       });
-
-    
-
-    
-    
   }
 
 }
