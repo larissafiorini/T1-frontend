@@ -17,6 +17,9 @@ export class AppComponent {
   Disciplina: Disciplina;
   disciplinas: Disciplina[]
   identificador: String
+  heroes:boolean
+
+
   
 
   constructor(private ExampleService: ExampleService) {
@@ -29,7 +32,7 @@ export class AppComponent {
     this.Disciplina = new Disciplina();
     this.Disciplina.nome="teste";
     this.Disciplina.curso="es";
-
+    
     this.ExampleService.insereDisciplina(this.Disciplina);
 
     this.ExampleService.insereDisciplina(this.Disciplina).subscribe(
@@ -52,13 +55,12 @@ export class AppComponent {
 
   deletarDisciplina(id){
     alert("Id : " + id.number);
-    this.ExampleService.excluirDisciplina(id).subscribe(
+    this.ExampleService.excluirDisciplina(id.number).subscribe(
       response => {
         console.log(response);
-       
+        alert("resposta "+response);
       });
     this.getDisciplinas();
-    console.log(this.disciplinas);  
   }
 
   getDisciplinas(){
@@ -70,6 +72,20 @@ export class AppComponent {
         console.log(this.disciplinas);
 
       });
+  }
+
+  insertDisciplina(ins){
+    this.Disciplina = new Disciplina();
+    this.Disciplina.nome=ins.nome;
+    this.Disciplina.curso=ins.curso;
+    alert(this.Disciplina.nome + " " + this.Disciplina.curso);
+
+    this.ExampleService.insereDisciplina(this.Disciplina).subscribe(
+      response => {
+        console.log(response);
+      });
+
+    
   }
 
 }
