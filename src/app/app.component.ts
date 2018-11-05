@@ -83,9 +83,21 @@ export class AppComponent {
     this.ExampleService.insereDisciplina(this.Disciplina).subscribe(
       response => {
         console.log(response);
+      }) 
+    
+  }
+
+  atualizaDisciplina(newdata){
+    this.Disciplina = new Disciplina();
+    this.Disciplina.nome=newdata.nome;
+    this.Disciplina.curso=newdata.curso;
+    alert(this.Disciplina.nome + " " + this.Disciplina.curso);
+
+    this.ExampleService.atualizarDisciplina(newdata.id,this.Disciplina).subscribe(
+      response => {
+        console.log(response);
       });
 
-    
   }
 
 }

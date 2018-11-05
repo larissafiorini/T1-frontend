@@ -45,3 +45,18 @@
    <br/>
    <input type = "submit" value = "submit">
 </form>
+
+
+<h2>Atualizar disciplina: </h2>
+<p>Digite dados da disciplina que deseja atualizar no BD: </p>
+
+<form #newdata = "ngForm" (ngSubmit) = "insertDisciplina(newdata.value)" >
+    <input type = "text" name = "id" placeholder = "id" ngModel>
+    <br/>
+   <input type = "text" name = "nome" placeholder = "nome" ngModel>
+   <br/>
+   <input type = "text" name = "curso" placeholder = "curso" ngModel>
+   <br/>
+   <input type = "submit" value = "submit">
+</form>
+
