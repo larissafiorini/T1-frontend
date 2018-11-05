@@ -1,6 +1,5 @@
-export class Produto {
+export class Professor {
 
     public nome: string;
     public curso: string;
-    public id_eu: number;
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ExampleService } from './app.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Produto } from '../produto/produto';
+import { Disciplina } from '../dados/disciplina';
 
 @Component({
   selector: 'app-root',
@@ -14,32 +14,37 @@ export class AppComponent {
 
   loginForm: FormGroup;
   fb: FormBuilder;
-  produto: Produto;
+  Disciplina: Disciplina;
 
   constructor(private ExampleService: ExampleService) {
 
     }
 
   ngOnInit() {
-    this.ExampleService.getProdutos();
-    this.produto = new Produto();
-    this.produto.nome="teste";
-    this.produto.id_eu=1;
-    this.produto.curso="es";
+    this.ExampleService.getDisciplinas();
+    this.Disciplina = new Disciplina();
+    this.Disciplina.nome="teste";
+    this.Disciplina.curso="es";
 
-    this.ExampleService.insereProduto(this.produto);
+    this.ExampleService.insereDisciplina(this.Disciplina);
 
-    this.ExampleService.insereProduto(this.produto).subscribe(
+    this.ExampleService.insereDisciplina(this.Disciplina).subscribe(
       response => {
         console.log(response);
       });
-    
+    this.ExampleService.excluirDisciplina('1').subscribe(
+        response => {
+          console.log(response);
+        });
+
     console.log("test");  
-    this.ExampleService.getProdutos().subscribe(
+    this.ExampleService.getDisciplinas().subscribe(
       response => {
         console.log(response);
       });
-      
+
+    
+    
   }
 
 }
