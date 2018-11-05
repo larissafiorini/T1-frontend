@@ -13,6 +13,15 @@
   </li>
 </ul>
 
+<h2>Professores no banco de dados: </h2>
+<ul>
+  <li *ngFor="let prof of professores">
+    {{ prof.id }}
+    {{ prof.nome }}
+    {{ prof.idade }}
+  </li>
+</ul>
+
 <h2>Deletar disciplina: </h2>
 <p>Digite id da disciplina que deseja excluir do BD: </p>
 
@@ -33,6 +42,17 @@
    <input type = "submit" value = "submit">
 </form>
 
+
+<h2>Inserir professor: </h2>
+<p>Digite dados do professor que deseja inserir no BD: </p>
+
+<form #insp = "ngForm" (ngSubmit) = "insertProfessor(insp.value)" >
+   <input type = "text" name = "nome" placeholder = "nome" ngModel>
+   <br/>
+   <input type = "text" name = "idade" placeholder = "idade" ngModel>
+   <br/>
+   <input type = "submit" value = "submit">
+</form>
 
 <h2>Atualizar disciplina: </h2>
 <p>Digite dados da disciplina que deseja atualizar no BD: </p>

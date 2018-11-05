@@ -20,9 +20,20 @@ export class ExampleService {
 
   }
 
+  getProfessores(): Observable<any>{
+    console.log("usando service");
+    return this.http.get<any>(this.url + "api/professor");
+
+  }
+
   insereDisciplina(Disciplina: Disciplina): Observable<Disciplina>{
     console.log("inserindo");
     return this.http.post<any>(this.url + "api/disciplina", Disciplina);
+  }
+
+  insereProfessor(Professor: Professor): Observable<Professor>{
+    console.log("inserindo prof");
+    return this.http.post<any>(this.url + "api/professor", Professor);
   }
 
   excluirDisciplina(id: string): Observable<Disciplina> {

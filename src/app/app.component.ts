@@ -15,6 +15,7 @@ export class AppComponent {
   exampleForm: FormGroup;
   Disciplina: Disciplina;
   disciplinas: Disciplina[]
+  professores: Professor[]
   identificador: String
   Professor: Professor;
 
@@ -25,6 +26,7 @@ export class AppComponent {
   ngOnInit() {
     this.ExampleService.getDisciplinas();
     this.getDisciplinas();
+    this.getProfessores();
   }
 
   deletarDisciplina(id){
@@ -49,6 +51,18 @@ export class AppComponent {
       });
   }
 
+
+  getProfessores(){
+    this.ExampleService.getProfessores().subscribe(
+      response => {
+        console.log(response);
+        this.professores = response;
+        console.log("Professores: ");
+        console.log(this.professores);
+
+      });
+  }
+
   insertDisciplina(ins){
     this.Disciplina = new Disciplina();
     this.Disciplina.nome=ins.nome;
@@ -61,6 +75,22 @@ export class AppComponent {
       });
 
     this.getDisciplinas();
+    window.location.reload(); 
+
+  }
+
+  insertProfessor(insp){
+    this.Professor = new Professor();
+    this.Professor.nome=insp.nome;
+    this.Professor.idade=insp.idade;
+    alert(this.Professor.nome + " " + this.Professor.idade);
+
+    this.ExampleService.insereProfessor(this.Professor).subscribe(
+      response => {
+        console.log(response);
+      });
+
+    this.getProfessores();
     window.location.reload(); 
 
   }
