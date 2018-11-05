@@ -16,12 +16,15 @@ export class AppComponent {
   fb: FormBuilder;
 
   constructor(private ExampleService: ExampleService) {
-    
+
     }
 
   ngOnInit() {
     this.ExampleService.getProdutos();
-    console.log(this.ExampleService.getProdutos())
+    this.ExampleService.getProdutos().subscribe(
+      response => {
+        console.log(response);
+      });
   }
 
 }
