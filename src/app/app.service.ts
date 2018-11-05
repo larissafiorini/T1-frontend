@@ -35,8 +35,11 @@ export class ExampleService {
     return this.http.put<Disciplina>(`${this.url}api/disciplina/${id}`,Disciplina );
   }
 
-
-
+  findProfessor(id_disciplina: string)  : Observable<Disciplina> {
+    console.log("buscando professor pelo id da disciplina");
+    
+    return this.http.get<Disciplina>(`${this.url}api/disciplina/find_by_professor/${id_disciplina}`);
+  }
 
 
 

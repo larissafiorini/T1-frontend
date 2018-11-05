@@ -84,7 +84,6 @@ export class AppComponent {
       response => {
         console.log(response);
       }) 
-    
   }
 
   atualizaDisciplina(newdata){
@@ -99,5 +98,16 @@ export class AppComponent {
       });
 
   }
+
+  buscaProfessor(iddisc){
+    alert(iddisc.id);
+    this.ExampleService.findProfessor(iddisc.id).subscribe(
+      response => {
+        console.log(response);
+      });
+
+
+  }
+  
 
 }
