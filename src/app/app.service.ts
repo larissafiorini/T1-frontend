@@ -7,34 +7,18 @@ import { HttpClient } from '@angular/common/http';
 export class ExampleService {
 
   private url = EXEMPLO_API;
-
-//   console.log("URL"+url);
-//   usuarioLogado: Usuario
-
+  
   constructor(private http: HttpClient) { }
 
   getProdutos(){
     console.log("usando service");
-    console.log(this.url);
+    return this.http.get<any>(this.url + "api/disciplina");
+
   }
 
-//   setUsuario(user: Usuario) {
-//       this.usuarioLogado = user
+//   insertProduto(){
+//     return this.http.post<any>(this.url + "/api/disciplina", );
 //   }
 
-//   getUsuario(){
-//       return this.usuarioLogado
-//   }
 
-//   efetuarLogin(usuario: Usuario): any{
-//     return this.http.post<any>(this.url + "/login", usuario);
-//   }
-  
-//   efetuarLogout(): any{
-//     return this.http.get<any>(this.url + "/logout");
-//   }
-
-//   estaLogado(): boolean {
-//     return this.usuarioLogado !== undefined
-//   }
 }

@@ -21,6 +21,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.ExampleService.getProdutos();
+    console.log(this.ExampleService.getProdutos())
   }
 
 }
