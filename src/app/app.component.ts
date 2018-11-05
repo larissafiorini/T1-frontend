@@ -17,10 +17,6 @@ export class AppComponent {
   Disciplina: Disciplina;
   disciplinas: Disciplina[]
   identificador: String
-  heroes:boolean
-
-
-  
 
   constructor(private ExampleService: ExampleService) {
     this.fb = new FormBuilder();
@@ -29,27 +25,6 @@ export class AppComponent {
 
   ngOnInit() {
     this.ExampleService.getDisciplinas();
-    this.Disciplina = new Disciplina();
-    this.Disciplina.nome="teste";
-    this.Disciplina.curso="es";
-    
-    this.ExampleService.insereDisciplina(this.Disciplina);
-
-    this.ExampleService.insereDisciplina(this.Disciplina).subscribe(
-      response => {
-        console.log(response);
-      });
-    this.ExampleService.excluirDisciplina('1').subscribe(
-        response => {
-          console.log(response);
-        });
-    
-    this.ExampleService.atualizarDisciplina('1',this.Disciplina).subscribe(
-      response => {
-        console.log(response);
-      });
-
-    console.log("test");  
     this.getDisciplinas();
   }
 
