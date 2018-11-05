@@ -3,6 +3,7 @@ import { ExampleService } from './app.service';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Disciplina } from '../dados/disciplina';
+import { Professor } from '../dados/professor';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,15 @@ import { Disciplina } from '../dados/disciplina';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
 
   exampleForm: FormGroup;
-  fb: FormBuilder;
   Disciplina: Disciplina;
   disciplinas: Disciplina[]
   identificador: String
+  Professor: Professor;
 
   constructor(private ExampleService: ExampleService) {
-    this.fb = new FormBuilder();
-   
+
   }
 
   ngOnInit() {
@@ -36,6 +35,7 @@ export class AppComponent {
         alert("resposta "+response);
       });
     this.getDisciplinas();
+    window.location.reload();
   }
 
   getDisciplinas(){
@@ -58,7 +58,11 @@ export class AppComponent {
     this.ExampleService.insereDisciplina(this.Disciplina).subscribe(
       response => {
         console.log(response);
-      }) 
+      });
+
+    this.getDisciplinas();
+    window.location.reload(); 
+
   }
 
   atualizaDisciplina(newdata){
@@ -71,6 +75,9 @@ export class AppComponent {
       response => {
         console.log(response);
       });
+    
+    this.getDisciplinas();
+    window.location.reload();
 
   }
 
@@ -79,6 +86,11 @@ export class AppComponent {
     this.ExampleService.findProfessor(iddisc.id).subscribe(
       response => {
         console.log(response);
+        console.log("Professor encontrado: ");
+        console.log(response.nome);
+        console.log(response.idade);
+        this.Professor.nome = response.nome;
+        this.Professor.idade = response.idade;
       });
 
 

@@ -3,6 +3,8 @@ import { EXEMPLO_API } from '../app.api';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Disciplina } from '../dados/disciplina';
+import { Professor } from '../dados/professor';
+
 
 
 @Injectable()
@@ -35,10 +37,10 @@ export class ExampleService {
     return this.http.put<Disciplina>(`${this.url}api/disciplina/${id}`,Disciplina );
   }
 
-  findProfessor(id_disciplina: string)  : Observable<Disciplina> {
+  findProfessor(id_disciplina: string)  : Observable<Professor> {
     console.log("buscando professor pelo id da disciplina");
     
-    return this.http.get<Disciplina>(`${this.url}api/disciplina/find_by_professor/${id_disciplina}`);
+    return this.http.get<Professor>(`${this.url}api/disciplina/find_by_professor/${id_disciplina}`);
   }
 
 
