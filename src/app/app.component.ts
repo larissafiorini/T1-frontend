@@ -36,12 +36,19 @@ export class AppComponent {
         response => {
           console.log(response);
         });
+    
+    this.ExampleService.atualizarDisciplina('1',this.Disciplina).subscribe(
+      response => {
+        console.log(response);
+      });
 
     console.log("test");  
     this.ExampleService.getDisciplinas().subscribe(
       response => {
         console.log(response);
       });
+
+    
 
     
     

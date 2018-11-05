@@ -29,6 +29,12 @@ export class ExampleService {
     return this.http.delete<Disciplina>(`${this.url}api/disciplina/${id}`);
   }
 
+  atualizarDisciplina(id: string, Disciplina: Disciplina): Observable<Disciplina> {
+    console.log("atualizando");
+    
+    return this.http.put<Disciplina>(`${this.url}api/disciplina/${id}`,Disciplina );
+  }
+
 
 
 
