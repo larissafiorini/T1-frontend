@@ -15,6 +15,7 @@ export class AppComponent {
   exampleForm: FormGroup;
   Disciplina: Disciplina;
   disciplinas: Disciplina[]
+  disciplinasProfessor: Disciplina[] = []
   professores: Professor[]
   identificador: String
   Professor: Professor;
@@ -75,7 +76,7 @@ export class AppComponent {
       });
 
     this.getDisciplinas();
-    window.location.reload(); 
+    window.location.reload();
 
   }
 
@@ -91,7 +92,7 @@ export class AppComponent {
       });
 
     this.getProfessores();
-    window.location.reload(); 
+    window.location.reload();
 
   }
 
@@ -105,7 +106,7 @@ export class AppComponent {
       response => {
         console.log(response);
       });
-    
+
     this.getDisciplinas();
     window.location.reload();
 
@@ -116,15 +117,19 @@ export class AppComponent {
     this.ExampleService.findProfessor(iddisc.id).subscribe(
       response => {
         console.log(response);
-        console.log("Professor encontrado: ");
-        console.log(response.nome);
-        console.log(response.idade);
-        this.Professor.nome = response.nome;
-        this.Professor.idade = response.idade;
+        console.log("Disciplinas encontradas: ");
+        response.forEach(element => {
+          console.log(element.nome);
+          console.log(element.curso);
+          let disciplina = {  nome: element.nome, curso: element.curso }
+          this.disciplinasProfessor.push(disciplina);
+          // this.Professor.nome = response.nome;
+          // this.Professor.idade = response.idade;
+        });
       });
 
 
   }
-  
+
 
 }

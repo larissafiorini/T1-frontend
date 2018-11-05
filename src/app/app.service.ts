@@ -38,20 +38,20 @@ export class ExampleService {
 
   excluirDisciplina(id: string): Observable<Disciplina> {
     console.log("excluindo");
-    
+
     return this.http.delete<Disciplina>(`${this.url}api/disciplina/${id}`);
   }
 
   atualizarDisciplina(id: string, Disciplina: Disciplina): Observable<Disciplina> {
     console.log("atualizando");
-    
+
     return this.http.put<Disciplina>(`${this.url}api/disciplina/${id}`,Disciplina );
   }
 
-  findProfessor(id_disciplina: string)  : Observable<Professor> {
+  findProfessor(id_disciplina: string)  : Observable<Disciplina[]> {
     console.log("buscando professor pelo id da disciplina");
-    
-    return this.http.get<Professor>(`${this.url}api/disciplina/find_by_professor/${id_disciplina}`);
+
+    return this.http.get<Disciplina[]>(`${this.url}api/disciplina/find_by_professor/${id_disciplina}`);
   }
 
 
